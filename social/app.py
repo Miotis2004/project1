@@ -14,10 +14,12 @@ def index():
         post = request.form.get('post')
         create_post(name, post)
         posts = get_posts()
+        return render_template('index.html', posts=posts)
     else:
         posts = get_posts()
+        return render_template('intro.html', posts=posts)
 
-    return render_template('index.html', posts=posts)
+    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
