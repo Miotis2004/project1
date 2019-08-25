@@ -16,11 +16,15 @@ def create_post(name, content):
     })
     client.put(entity)
 
-    posts = [name, content]
-    return posts
+    
 
 def get_posts():
     #Retrieve data from datastore
-    posts = ['bob', 'Hello World!']
-    return posts
+    from google.cloud import datastore
+    client = datastore.Client()
+
+    query = client.query(kind='posts')
+    results = list(query.fetch())
+
+    return results
 

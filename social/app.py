@@ -9,18 +9,16 @@ CORS(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'GET':
-        pass
-    
     if request.method == 'POST':
         name = request.form.get('name')
         post = request.form.get('post')
-        posts = create_post(name, post)
+        create_post(name, post)
+        posts = get_posts()
     else:
         posts = get_posts()
 
     return render_template('index.html', posts=posts)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
 
