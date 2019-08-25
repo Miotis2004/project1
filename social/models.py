@@ -8,7 +8,8 @@ def create_post(name, content):
     from google.cloud import datastore
     import datetime
     client = datastore.Client()
-    key = client.key('posts', name + datetime.datetime.now())
+    currentTime = datetime.datetime.now()
+    key = client.key('posts', str(currentTime))
     entity = datastore.Entity(key=key)
     entity.update({
         'userName': name,
