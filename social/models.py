@@ -1,8 +1,4 @@
 #Connect to datastore
-
-
-
-
 def create_post(name, content):
     #Insert data into datastore
     from google.cloud import datastore
@@ -16,16 +12,11 @@ def create_post(name, content):
         'userPost': content
     })
     client.put(entity)
-
     
-
 def get_posts():
     #Retrieve data from datastore
     from google.cloud import datastore
     client = datastore.Client()
-
     query = client.query(kind='posts')
     results = list(query.fetch())
-
     return results
-

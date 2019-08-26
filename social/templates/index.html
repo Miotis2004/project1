@@ -3,7 +3,7 @@
     <header>
         <center>
             <h1>Welcome to RevAntarctica</h1>
-            
+            <meta http-equiv="refresh" content="60"/>
         </center>
     </header>
     <body>
@@ -15,12 +15,13 @@
                 <input placeholder="Post Content" name="post">
                 <input type="submit" value="Submit">
             </form>
-
-            {% for post in posts %}
-            <div>
-                {{ post['userName'] + ':  ' + post['userPost'] }}
-            </div>
-            {% endfor %}
+            <table>
+            <tbody>
+                {% for post in posts %}
+                <tr><td>{{ post[0] }} </td><td>{{ post[1] }} </td></tr>
+                {% endfor %}
+            </tbody>
+            </table>
         </center>
         </div>
     </body>
